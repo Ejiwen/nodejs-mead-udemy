@@ -1,4 +1,4 @@
-const fs = require('fs');
-require('./utils');
+//const fs = require('fs');
+const name = require('./utils.js');
 
-console.log('You are Welecom ... ');
+console.log('You are Welecom ... ',name); 
