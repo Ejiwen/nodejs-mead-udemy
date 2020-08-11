@@ -27,10 +27,10 @@ const addNote = (title, body) => {
 
 const removeNote = (title) => {
     const notes = loadNotes();
-    const duplicateNote = notes.filter( (note) => {
-        if(note.title == title) delete note.title;
+    const noteToKeep = notes.filter( (note) => {
+        return note.title != title
     })
-    saveNote(notes);
+    saveNote(noteToKeep);
 }
 
 const loadNotes = () => {
