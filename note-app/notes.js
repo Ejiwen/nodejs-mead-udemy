@@ -7,12 +7,30 @@ const getNotes = () => {
 const addNote = (title, body) => {
     const notes = loadNotes();
 
-    notes.push({
-        title: title,
-        body: body
+    const duplicateNote = notes.filter( (note) => {
+        return (note.title == title);
     })
 
-    saveNote(notes) 
+    
+    
+    if(duplicateNote.length === 0) {
+    notes.push({
+     title: title,
+     body: body
+    })
+     saveNote(notes) ;
+    }
+    else {
+        console.log("the same Title exist before ... !")
+    }
+}
+
+const removeNote = (title) => {
+    const notes = loadNotes();
+    const duplicateNote = notes.filter( (note) => {
+        if(note.title == title) delete note.title;
+    })
+    saveNote(notes);
 }
 
 const loadNotes = () => {
@@ -33,5 +51,6 @@ const saveNote = (notes) => {
 
 module.exports = {
     getNotes: getNotes,
-    addNote: addNote
+    addNote: addNote,
+    removeNote: removeNote
 }
